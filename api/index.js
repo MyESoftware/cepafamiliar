@@ -1,4 +1,4 @@
-import app from '../dist/server/node-build.mjs'; // Ajusta la ruta a donde tu servidor exporta la app
-import serverless from 'serverless-http';
+import app from "../dist/server/node-build.mjs";
 
-export default serverless(app);
+// Vercel's Node runtime invokes Express-compatible handlers with (req, res).
+export default app;
