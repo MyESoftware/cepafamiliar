@@ -52,7 +52,7 @@ export default function Index() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
-            className="site-shell relative min-h-screen bg-[#faf8f2] text-[#1f5b34] overflow-x-hidden selection:bg-[#9fbd79] selection:text-[#163a24]"
+            className="site-shell relative min-h-screen overflow-x-clip bg-[#faf8f2] pb-24 text-[#1f5b34] selection:bg-[#9fbd79] selection:text-[#163a24] sm:pb-0"
           >
             {/* Header / Navbar */}
             <Header goTo={goTo} />
@@ -92,12 +92,12 @@ export default function Index() {
 
             {/* Floating Social Media Access (Left/Right rail - Premium custom animations) */}
             <aside 
-              className="premium-social-rail fixed right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-4" 
+              className="fixed bottom-4 left-1/2 z-50 flex -translate-x-1/2 flex-row gap-3 sm:bottom-auto sm:left-auto sm:right-5 sm:top-1/2 sm:translate-x-0 sm:-translate-y-1/2 sm:flex-col sm:gap-4"
               aria-label="Redes sociales flotantes"
             >
               {/* WhatsApp Floating CTA with Glow and Bounce */}
               <motion.a
-                className="social-whatsapp h-12 w-12 rounded-full bg-[#25d366] text-white flex items-center justify-center shadow-[0_0_15px_rgba(37,211,102,0.4)] hover:shadow-[0_0_25px_rgba(37,211,102,0.75)] hover:scale-110 relative group"
+                className="group relative flex h-11 w-11 items-center justify-center rounded-full bg-[#25d366] text-white shadow-[0_0_15px_rgba(37,211,102,0.4)] transition-shadow hover:shadow-[0_0_25px_rgba(37,211,102,0.75)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#163a24] sm:h-12 sm:w-12"
                 href="https://wa.me/542612130058"
                 target="_blank"
                 rel="noreferrer"
@@ -112,14 +112,14 @@ export default function Index() {
                 whileTap={{ scale: 0.9 }}
               >
                 <WhatsappIcon size={22} />
-                <span className="absolute right-14 bg-[#163a24] text-[#faf8f2] text-[10px] uppercase font-bold tracking-widest px-3 py-2 rounded-xl opacity-0 pointer-events-none group-hover:opacity-100 shadow-xl transition-all duration-300 whitespace-nowrap border border-white/10 select-none">
+                <span className="pointer-events-none absolute right-14 hidden select-none whitespace-nowrap rounded-xl border border-white/10 bg-[#163a24] px-3 py-2 text-[10px] font-bold uppercase tracking-widest text-[#faf8f2] opacity-0 shadow-xl transition-all duration-300 group-hover:opacity-100 sm:block">
                   Hacer Pedido
                 </span>
               </motion.a>
               
               {/* Instagram Floating CTA */}
               <motion.a
-                className="h-12 w-12 rounded-full bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white flex items-center justify-center shadow-[0_0_15px_rgba(238,42,123,0.4)] hover:shadow-[0_0_25px_rgba(238,42,123,0.75)] hover:scale-110 relative group"
+                className="group relative flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white shadow-[0_0_15px_rgba(238,42,123,0.4)] transition-shadow hover:shadow-[0_0_25px_rgba(238,42,123,0.75)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#163a24] sm:h-12 sm:w-12"
                 href="https://www.instagram.com/cepafamiliar?utm_source=qr&igsh=dnB6dHBidnd6Nnh4"
                 target="_blank"
                 rel="noreferrer"
@@ -134,14 +134,14 @@ export default function Index() {
                 whileTap={{ scale: 0.9 }}
               >
                 <Instagram size={22} />
-                <span className="absolute right-14 bg-[#163a24] text-[#faf8f2] text-[10px] uppercase font-bold tracking-widest px-3 py-2 rounded-xl opacity-0 pointer-events-none group-hover:opacity-100 shadow-xl transition-all duration-300 whitespace-nowrap border border-white/10 select-none">
+                <span className="pointer-events-none absolute right-14 hidden select-none whitespace-nowrap rounded-xl border border-white/10 bg-[#163a24] px-3 py-2 text-[10px] font-bold uppercase tracking-widest text-[#faf8f2] opacity-0 shadow-xl transition-all duration-300 group-hover:opacity-100 sm:block">
                   Instagram
                 </span>
               </motion.a>
 
               {/* Facebook Floating CTA */}
               <motion.a
-                className="h-12 w-12 rounded-full bg-[#1877f2] text-white flex items-center justify-center shadow-[0_0_15px_rgba(24,119,242,0.4)] hover:shadow-[0_0_25px_rgba(24,119,242,0.75)] hover:scale-110 relative group"
+                className="group relative flex h-11 w-11 items-center justify-center rounded-full bg-[#1877f2] text-white shadow-[0_0_15px_rgba(24,119,242,0.4)] transition-shadow hover:shadow-[0_0_25px_rgba(24,119,242,0.75)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#163a24] sm:h-12 sm:w-12"
                 href="https://www.facebook.com/share/1Ja3mDFqm4/"
                 target="_blank"
                 rel="noreferrer"
@@ -156,7 +156,7 @@ export default function Index() {
                 whileTap={{ scale: 0.9 }}
               >
                 <Facebook size={22} />
-                <span className="absolute right-14 bg-[#163a24] text-[#faf8f2] text-[10px] uppercase font-bold tracking-widest px-3 py-2 rounded-xl opacity-0 pointer-events-none group-hover:opacity-100 shadow-xl transition-all duration-300 whitespace-nowrap border border-white/10 select-none">
+                <span className="pointer-events-none absolute right-14 hidden select-none whitespace-nowrap rounded-xl border border-white/10 bg-[#163a24] px-3 py-2 text-[10px] font-bold uppercase tracking-widest text-[#faf8f2] opacity-0 shadow-xl transition-all duration-300 group-hover:opacity-100 sm:block">
                   Facebook
                 </span>
               </motion.a>
@@ -167,7 +167,7 @@ export default function Index() {
               <motion.button
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="back-top fixed right-6 bottom-6 w-12 h-12 rounded-full bg-[#cfe3c7] hover:bg-[#245b3c] text-[#245b3c] hover:text-white flex items-center justify-center text-lg z-50 shadow-lg border border-[#245b3c]/10 hover:-translate-y-1 transition-all"
+                className="fixed bottom-5 right-3 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-[#245b3c]/10 bg-[#cfe3c7] text-lg text-[#245b3c] shadow-lg transition-colors hover:bg-[#245b3c] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#245b3c] focus-visible:ring-offset-2 sm:bottom-6 sm:right-6 sm:h-12 sm:w-12"
                 onClick={() => goTo("inicio")}
                 aria-label="Volver arriba"
               >

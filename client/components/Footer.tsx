@@ -11,13 +11,13 @@ export default function Footer({ goTo }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="footer bg-[#173d29] text-[#e1ecda] py-16 px-6 lg:px-24">
-      <div className="container mx-auto">
-        <div className="footer-main flex flex-col lg:flex-row justify-between gap-12 lg:gap-8 mb-12">
+    <footer className="bg-[#173d29] px-4 py-12 text-[#e1ecda] sm:px-6 sm:py-16 lg:px-24">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-10 flex flex-col justify-between gap-10 lg:mb-12 lg:flex-row lg:gap-8">
           {/* Logo and Tagline */}
           <div className="max-w-xs">
-            <div className="footer-brand mb-6">
-              <img className="footer-logo-image w-28 h-28 object-cover rounded-full border-2 border-[#9fbd79] shadow-md" src={logoUrl} alt="Logo de Cepa Familiar" />
+            <div className="mb-5">
+              <img className="h-24 w-24 rounded-full border-2 border-[#9fbd79] object-cover shadow-md sm:h-28 sm:w-28" src={logoUrl} alt="Logo de Cepa Familiar" />
             </div>
             <p className="font-serif text-2xl text-[#9fbd79] leading-tight italic">
               “Seleccionamos calidad,<br />
@@ -26,7 +26,7 @@ export default function Footer({ goTo }: FooterProps) {
           </div>
 
           {/* Links sections */}
-          <div className="footer-links flex flex-wrap gap-12 lg:gap-24">
+          <div className="grid grid-cols-2 gap-x-8 gap-y-8 sm:flex sm:flex-wrap sm:gap-12 lg:gap-24">
             {/* Navegación */}
             <div className="flex flex-col gap-3">
               <span className="text-[10px] text-[#9fc286] font-bold tracking-widest uppercase mb-2">
@@ -36,7 +36,7 @@ export default function Footer({ goTo }: FooterProps) {
                 <button
                   key={label}
                   onClick={() => goTo(label.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))}
-                  className="text-left text-xs text-[#dae4d4] hover:text-[#9fbd79] transition-colors"
+                  className="min-h-11 text-left text-xs text-[#dae4d4] transition-colors hover:text-[#9fbd79] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9fbd79]"
                 >
                   {label}
                 </button>
@@ -52,7 +52,7 @@ export default function Footer({ goTo }: FooterProps) {
                 href="https://wa.me/542612130058"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 text-xs text-[#dae4d4] hover:text-[#9fbd79] transition-colors"
+                className="flex min-h-11 items-center gap-2 text-xs text-[#dae4d4] transition-colors hover:text-[#9fbd79] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9fbd79]"
               >
                 <WhatsappIcon size={14} /> WhatsApp
               </a>
@@ -60,7 +60,7 @@ export default function Footer({ goTo }: FooterProps) {
                 href="https://www.instagram.com/cepafamiliar?utm_source=qr&igsh=dnB6dHBidnd6Nnh4"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 text-xs text-[#dae4d4] hover:text-[#9fbd79] transition-colors"
+                className="flex min-h-11 items-center gap-2 text-xs text-[#dae4d4] transition-colors hover:text-[#9fbd79] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9fbd79]"
               >
                 <Instagram size={14} /> Instagram
               </a>
@@ -68,7 +68,7 @@ export default function Footer({ goTo }: FooterProps) {
                 href="https://www.facebook.com/share/1Ja3mDFqm4/"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 text-xs text-[#dae4d4] hover:text-[#9fbd79] transition-colors"
+                className="flex min-h-11 items-center gap-2 text-xs text-[#dae4d4] transition-colors hover:text-[#9fbd79] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9fbd79]"
               >
                 <Facebook size={14} /> Facebook
               </a>
@@ -89,7 +89,7 @@ export default function Footer({ goTo }: FooterProps) {
         </div>
 
         {/* Bottom bar */}
-        <div className="footer-bottom border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-[#97ae9c]">
+        <div className="flex flex-col items-start justify-between gap-3 border-t border-white/10 pt-6 text-[10px] text-[#97ae9c] sm:pt-8 md:flex-row md:items-center md:gap-4">
           <span>© {currentYear} Cepa Familiar. Todos los derechos reservados.</span>
           <span>Hecho con cuidado en Mendoza</span>
         </div>

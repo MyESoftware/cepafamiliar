@@ -32,8 +32,8 @@ export default function Recipes({ goTo }: RecipesProps) {
   };
 
   return (
-    <section id="recetas" className="recipes section-pad bg-[#e1eddc] relative overflow-hidden">
-      <div className="container mx-auto">
+    <section id="recetas" className="section-pad relative overflow-hidden bg-[#e1eddc]">
+      <div className="mx-auto max-w-7xl">
         
         {/* Banner Línea Ensaladas Cepa Fresh */}
         <motion.div
@@ -41,7 +41,7 @@ export default function Recipes({ goTo }: RecipesProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative rounded-3xl overflow-hidden mb-16 h-64 md:h-80 shadow-xl border border-[#cfe3c7] flex flex-col justify-end p-8 md:p-12 group"
+          className="group relative mb-12 flex h-72 flex-col justify-end overflow-hidden rounded-3xl border border-[#cfe3c7] p-5 shadow-xl sm:h-80 sm:p-8 md:mb-16 md:p-12"
         >
           <img
             src="/cepa_fresh_salads.png"
@@ -54,7 +54,7 @@ export default function Recipes({ goTo }: RecipesProps) {
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-[#b8d48f] bg-[#163a24]/60 border border-[#b8d48f]/20 backdrop-blur-sm mb-4">
               <Star size={12} className="fill-[#b8d48f]" /> Nueva Línea Exclusiva
             </span>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold !text-white mb-2 leading-tight">
+            <h2 className="mb-2 text-3xl font-serif font-bold leading-tight text-white sm:text-4xl md:text-5xl">
               Ensaladas Cepa Fresh
             </h2>
             <p className="text-xs md:text-sm text-white/80 leading-relaxed">
@@ -64,7 +64,7 @@ export default function Recipes({ goTo }: RecipesProps) {
         </motion.div>
 
         {/* Section Heading */}
-        <div className="recipes-head flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
+        <div className="mb-10 flex flex-col items-stretch justify-between gap-5 md:mb-12 md:flex-row md:items-end md:gap-6">
           <div>
             <span className="eyebrow block text-xs font-bold uppercase tracking-widest text-[#5f8d63] mb-3">
               Almuerzos Saludables
@@ -75,7 +75,7 @@ export default function Recipes({ goTo }: RecipesProps) {
             </h3>
           </div>
           <button
-            className="outline-button group flex items-center gap-2 hover:bg-[#245b3c] hover:text-white hover:border-[#245b3c] transition-all duration-300"
+            className="outline-button group w-full hover:border-[#245b3c] hover:bg-[#245b3c] hover:text-white sm:w-auto"
             onClick={() => goTo("contacto")}
           >
             Hacer un pedido especial
@@ -84,15 +84,15 @@ export default function Recipes({ goTo }: RecipesProps) {
         </div>
 
         {/* Salad Grid */}
-        <div className="recipe-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6">
           {RECIPES.map((recipe) => (
             <motion.article
-              className="recipe-card bg-[#fbfaf4] rounded-2xl overflow-hidden border border-[#dcdacb] flex flex-col justify-between group shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300"
+              className="group flex min-w-0 flex-col justify-between overflow-hidden rounded-2xl border border-[#dcdacb] bg-[#fbfaf4] shadow-sm transition-shadow duration-300 hover:shadow-xl"
               key={recipe.id}
               whileHover={{ scale: 1.01 }}
             >
               <div>
-                <div className={`recipe-image recipe-${recipe.kind} relative h-48 overflow-hidden flex items-center justify-center bg-[#dbb561]`}>
+                <div className={`recipe-${recipe.kind} relative flex h-44 items-center justify-center overflow-hidden sm:h-48`}>
                   <span className="absolute top-4 left-4 text-xs font-bold text-white tracking-widest uppercase z-10 bg-black/25 px-2.5 py-0.5 rounded-full backdrop-blur-sm">
                     {recipe.number}
                   </span>
@@ -101,8 +101,8 @@ export default function Recipes({ goTo }: RecipesProps) {
                   <div className="plate-art relative" />
                 </div>
 
-                <div className="p-6">
-                  <h4 className="font-serif text-2xl font-bold text-[#214f36] mb-3 group-hover:text-[#719b6a] transition-colors leading-tight">
+                <div className="p-5 sm:p-6">
+                  <h4 className="mb-3 font-serif text-2xl font-bold leading-tight text-[#214f36] transition-colors group-hover:text-[#719b6a]">
                     {recipe.title}
                   </h4>
                   <p className="text-xs text-[#6e7769] leading-relaxed mb-4 line-clamp-3">
@@ -111,10 +111,10 @@ export default function Recipes({ goTo }: RecipesProps) {
                 </div>
               </div>
 
-              <div className="p-6 pt-0">
+              <div className="p-5 pt-0 sm:p-6 sm:pt-0">
                 <button
                   onClick={() => handleOpenRecipe(recipe)}
-                  className="flex items-center gap-2 text-xs text-[#a78038] hover:text-[#245b3c] font-bold tracking-wider uppercase border-t border-[#f0eee4] pt-4 w-full text-left transition-colors group/btn"
+                  className="group/btn flex min-h-11 w-full items-center gap-2 border-t border-[#f0eee4] pt-4 text-left text-xs font-bold uppercase tracking-wider text-[#a78038] transition-colors hover:text-[#245b3c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#719b6a]"
                 >
                   <BookOpen size={14} />
                   <span>Ver Detalles</span>
@@ -128,7 +128,7 @@ export default function Recipes({ goTo }: RecipesProps) {
 
       {/* Interactive Salad Details Modal */}
       <Dialog open={selectedRecipe !== null} onOpenChange={handleCloseRecipe}>
-        <DialogContent className="max-w-2xl bg-[#fbfaf4] border-[#dcdacb] rounded-2xl overflow-y-auto max-h-[85vh] p-6 md:p-8">
+        <DialogContent className="max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-2xl overflow-y-auto rounded-2xl border-[#dcdacb] bg-[#fbfaf4] p-5 sm:w-full sm:p-6 md:p-8">
           {selectedRecipe && (
             <>
               <DialogHeader className="mb-6 text-left border-b border-[#f0eee4] pb-4">
@@ -144,7 +144,7 @@ export default function Recipes({ goTo }: RecipesProps) {
               </DialogHeader>
 
               {/* Salad Meta Info */}
-              <div className="flex flex-wrap gap-4 items-center text-xs text-[#214f36] font-bold tracking-wider uppercase bg-[#e1eddc] p-4 rounded-xl mb-6">
+              <div className="mb-6 flex flex-col gap-3 rounded-xl bg-[#e1eddc] p-4 text-xs font-bold uppercase tracking-wider text-[#214f36] sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
                 <div className="flex items-center gap-2">
                   <Clock size={16} className="text-[#6d9b69]" />
                   <span>{selectedRecipe.prepTime}</span>
@@ -195,7 +195,7 @@ export default function Recipes({ goTo }: RecipesProps) {
               </div>
 
               {/* Modal CTA */}
-              <div className="mt-8 pt-6 border-t border-[#f0eee4] flex flex-col sm:flex-row justify-between items-center gap-4">
+              <div className="mt-8 flex flex-col gap-4 border-t border-[#f0eee4] pt-6 sm:flex-row sm:items-center sm:justify-between">
                 <span className="text-[10px] text-[#6e7769] text-center sm:text-left">
                   ¿Te gustaría pedir esta ensalada? Escribile directo a nuestro bot.
                 </span>
@@ -203,7 +203,7 @@ export default function Recipes({ goTo }: RecipesProps) {
                   href={getWhatsAppMessage(selectedRecipe.title)}
                   target="_blank"
                   rel="noreferrer"
-                  className="button button-gold group flex items-center gap-2 text-xs py-3 px-5 w-full sm:w-auto shadow-md"
+                  className="button button-gold group w-full shadow-md sm:w-auto"
                 >
                   <WhatsappIcon size={14} /> Pedir Ensalada
                   <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

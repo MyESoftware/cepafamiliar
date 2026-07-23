@@ -41,9 +41,9 @@ const galleryImages = [
 
 export default function MasonryGallery() {
   return (
-    <section className="py-20 bg-[#f1f6ed] overflow-hidden border-t border-[#dcdacb]">
-      <div className="container mx-auto px-6">
-        <div className="section-heading centered text-center mb-16">
+    <section className="overflow-hidden border-t border-[#dcdacb] bg-[#f1f6ed] py-16 sm:py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="mb-10 text-center sm:mb-16">
           <span className="eyebrow block text-xs font-bold uppercase tracking-widest text-[#5f8d63] mb-3">
             Inspiración visual
           </span>
@@ -54,7 +54,7 @@ export default function MasonryGallery() {
         </div>
 
         {/* Asymmetrical Masonry Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 auto-rows-[200px] md:auto-rows-[250px] max-w-6xl mx-auto">
+        <div className="mx-auto grid max-w-6xl auto-rows-[8.5rem] grid-cols-2 gap-3 sm:auto-rows-[12.5rem] sm:gap-4 md:auto-rows-[15.625rem] md:grid-cols-3 md:gap-6 lg:grid-cols-4">
           {galleryImages.map((img, idx) => (
             <motion.div
               key={idx}
@@ -62,7 +62,7 @@ export default function MasonryGallery() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: idx * 0.08 }}
-              className={`relative overflow-hidden rounded-3xl border border-[#dcdacb] group bg-[#cfe3c7] shadow-sm hover:shadow-xl transition-all duration-500 ${img.span}`}
+              className={`group relative min-w-0 overflow-hidden rounded-2xl border border-[#dcdacb] bg-[#cfe3c7] shadow-sm transition-shadow duration-500 hover:shadow-xl sm:rounded-3xl ${img.span}`}
             >
               {/* Image with zoom effect on hover */}
               <img
@@ -73,17 +73,17 @@ export default function MasonryGallery() {
               />
 
               {/* Glassmorphic Elegant Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#163a24]/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+              <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-[#163a24]/90 via-transparent to-transparent p-3 opacity-100 transition-opacity duration-300 md:p-6 md:opacity-0 md:group-hover:opacity-100">
                 <span className="text-[9px] uppercase tracking-wider text-[#b8d48f] font-bold mb-1">
                   Cepa Familiar
                 </span>
-                <h3 className="font-serif text-lg md:text-xl font-bold text-white leading-tight">
+                <h3 className="font-serif text-base font-bold leading-tight text-white md:text-xl">
                   {img.title}
                 </h3>
               </div>
 
               {/* Minimal Border Frame Effect */}
-              <div className="absolute inset-4 border border-white/0 rounded-2xl group-hover:border-white/10 transition-colors duration-300 pointer-events-none" />
+              <div className="pointer-events-none absolute inset-3 rounded-xl border border-white/0 transition-colors duration-300 group-hover:border-white/10 sm:inset-4 sm:rounded-2xl" />
             </motion.div>
           ))}
         </div>

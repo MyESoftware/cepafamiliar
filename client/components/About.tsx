@@ -1,127 +1,86 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Sprout, Leaf, Truck, Heart } from "lucide-react";
 
 const benefits = [
-  {
-    icon: Sprout,
-    title: "Productos frescos",
-    text: "Elegidos a diario directamente del productor, asegurando el sabor y origen.",
-  },
-  {
-    icon: Leaf,
-    title: "Frutos secos premium",
-    text: "Texturas óptimas y nutrientes seleccionados para tu bienestar cotidiano.",
-  },
-  {
-    icon: Truck,
-    title: "Delivery programado",
-    text: "Planificá tu pedido con tranquilidad para recibirlo en la Sexta Sección.",
-  },
-  {
-    icon: Heart,
-    title: "Atención familiar",
-    text: "Cercanía en cada consulta y detalle de tu pedido, directo por WhatsApp.",
-  },
+  { icon: Sprout, title: "Productos frescos", text: "Elegidos a diario directamente del productor, asegurando el sabor y origen." },
+  { icon: Leaf, title: "Frutos secos premium", text: "Texturas óptimas y nutrientes seleccionados para tu bienestar cotidiano." },
+  { icon: Truck, title: "Delivery programado", text: "Planificá tu pedido con tranquilidad para recibirlo en la Sexta Sección." },
+  { icon: Heart, title: "Atención familiar", text: "Cercanía en cada consulta y detalle de tu pedido, directo por WhatsApp." },
 ];
 
 export default function About() {
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as any } },
-  };
+  const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section id="nosotros" className="story section-pad bg-[#f1f6ed]">
-      <div className="container mx-auto">
-        <div className="section-heading mb-16">
-          <span className="eyebrow block text-xs font-bold uppercase tracking-widest text-[#5f8d63] mb-3">
-            Nuestra esencia
-          </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-semibold text-[#214f36] leading-[1.05]">
+    <section id="nosotros" className="section-pad bg-[#f1f6ed]">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-10 sm:mb-12 lg:mb-16">
+          <span className="eyebrow mb-3 block">Nuestra esencia</span>
+          <h2 className="max-w-3xl text-4xl font-serif font-semibold leading-[1.02] tracking-[-0.04em] text-[#214f36] sm:text-5xl lg:text-6xl">
             Una historia que se<br />
-            <span className="text-[#9fbd79] italic font-medium">cultiva en familia.</span>
+            <span className="font-medium italic text-[#9fbd79]">cultiva en familia.</span>
           </h2>
         </div>
 
-        <div className="story-layout grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-          {/* Visual Artwork */}
-          <motion.div 
-            className="story-art relative max-w-sm mx-auto w-full"
-            initial={{ opacity: 0, scale: 0.95 }}
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-24">
+          <motion.div
+            className="relative mx-auto w-full max-w-sm px-2 pb-6"
+            initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.97 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.55 }}
           >
-            <div className="arch-image relative h-[380px] rounded-t-[200px] rounded-b-lg bg-[#cfe3c7] overflow-hidden shadow-inner">
-              <div className="art-sun absolute h-40 w-40 rounded-full bg-[#a9c990] right-12 top-12" />
-              <div className="art-hills absolute inset-x-[-10px] bottom-0 h-48 bg-[#75905b] rounded-t-[100%] transform -rotate-3 shadow-[100px_20px_0_#4e7852]" />
-              <span className="art-leaf absolute text-[150px] left-8 top-16 text-[#245b3c] transform -rotate-12 select-none pointer-events-none">✦</span>
+            <div className="relative h-[19rem] overflow-hidden rounded-b-lg rounded-t-[10rem] bg-[#cfe3c7] shadow-inner sm:h-[23.75rem] sm:rounded-t-[12.5rem]">
+              <div className="absolute right-8 top-9 h-32 w-32 rounded-full bg-[#a9c990] sm:right-12 sm:top-12 sm:h-40 sm:w-40" />
+              <div className="absolute inset-x-[-0.6rem] bottom-0 h-40 rotate-[-3deg] rounded-t-[100%] bg-[#75905b] shadow-[90px_20px_0_#4e7852] sm:h-48 sm:shadow-[100px_20px_0_#4e7852]" />
+              <span className="pointer-events-none absolute left-6 top-14 select-none text-[8rem] text-[#245b3c] sm:left-8 sm:top-16 sm:text-[9.4rem]">✦</span>
             </div>
-            
-            {/* Experience Stamp */}
-            <motion.div 
-              className="experience-stamp absolute -right-6 -bottom-6 bg-[#245b3c] border-[6px] border-[#f1f6ed] text-[#f6e9c4] w-28 h-28 rounded-full flex flex-col justify-center items-center text-center shadow-lg"
-              initial={{ rotate: -15, scale: 0.8 }}
-              whileInView={{ rotate: 0, scale: 1 }}
+            <motion.div
+              className="absolute -bottom-2 right-0 flex h-24 w-24 flex-col items-center justify-center rounded-full border-[5px] border-[#f1f6ed] bg-[#245b3c] text-center text-[#f6e9c4] shadow-lg sm:-bottom-4 sm:-right-3 sm:h-28 sm:w-28 sm:border-[6px]"
+              initial={shouldReduceMotion ? false : { scale: 0.85 }}
+              whileInView={{ scale: 1 }}
               viewport={{ once: true }}
-              transition={{ type: "spring", stiffness: 100, delay: 0.4 }}
+              transition={{ type: "spring", stiffness: 120, delay: 0.15 }}
             >
-              <strong className="font-serif text-3xl leading-none">100%</strong>
-              <span className="text-[7px] font-bold uppercase tracking-wider mt-1.5">selección<br />consciente</span>
+              <strong className="font-serif text-2xl leading-none sm:text-3xl">100%</strong>
+              <span className="mt-1 text-[0.4rem] font-bold uppercase tracking-wide sm:text-[0.45rem]">selección<br />consciente</span>
             </motion.div>
           </motion.div>
 
-          {/* Copywriter Text */}
-          <div className="story-copy">
-            <p className="lead text-2xl font-serif text-[#214f36] leading-relaxed mb-6">
+          <div className="mx-auto max-w-xl">
+            <p className="mb-5 font-serif text-2xl leading-snug text-[#214f36] sm:mb-6 sm:text-3xl">
               Somos un emprendimiento familiar nacido con el compromiso de elegir productos honestos, frescos y de excelente calidad para tu mesa.
             </p>
-            <p className="text-sm text-[#687464] leading-relaxed mb-6">
+            <p className="text-sm leading-relaxed text-[#687464] sm:text-base">
               Trabajamos cada día para brindar una atención cercana y la confianza que caracteriza a un negocio tradicional. Seleccionamos y preparamos cada pedido a mano, garantizando que solo lo mejor llegue a tu hogar.
             </p>
-            
-            <div className="signature flex items-center gap-2 mt-8 text-[#214f36]">
-              <span className="text-xs font-extrabold tracking-widest uppercase">CEPA</span>
-              <span className="font-serif text-2xl text-[#719b6a] italic">Familiar</span>
+            <div className="mt-7 flex items-center gap-2 text-[#214f36] sm:mt-8">
+              <span className="text-xs font-extrabold uppercase tracking-widest">CEPA</span>
+              <span className="font-serif text-2xl italic text-[#719b6a]">Familiar</span>
             </div>
           </div>
         </div>
 
-        {/* Benefits Grid */}
-        <motion.div 
-          className="benefits grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-24 border-y border-[#dcdacb] bg-[#f1f6ed]"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          {benefits.map((benefit, i) => {
+        <div className="mt-16 grid grid-cols-1 overflow-hidden border-y border-[#dcdacb] sm:grid-cols-2 lg:mt-24 lg:grid-cols-4">
+          {benefits.map((benefit, index) => {
             const Icon = benefit.icon;
             return (
-              <motion.article 
-                className="benefit-card group p-8 border-b md:border-b-0 md:border-r border-[#dcdacb] last:border-0 relative overflow-hidden transition-all duration-300 hover:bg-white hover:-translate-y-2 shadow-none hover:shadow-xl"
+              <motion.article
+                className={`group relative min-h-52 border-b border-[#dcdacb] bg-[#f1f6ed] p-6 transition-colors hover:bg-white sm:p-7 lg:min-h-0 lg:border-b-0 lg:border-r ${index === benefits.length - 1 ? "border-b-0 lg:border-r-0" : ""}`}
                 key={benefit.title}
-                variants={itemVariants}
+                initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.4, delay: index * 0.06 }}
               >
-                <div className="benefit-icon text-[#6d9b69] mb-6 transition-transform duration-300 group-hover:scale-110">
-                  <Icon size={24} />
-                </div>
-                <h3 className="font-serif text-xl font-bold text-[#214f36] mb-3">{benefit.title}</h3>
-                <p className="text-xs text-[#778171] leading-relaxed">{benefit.text}</p>
-                <span className="absolute right-6 top-8 text-[#6d9b69] opacity-30 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 text-xl font-light">↗</span>
+                <Icon size={24} className="mb-5 text-[#6d9b69]" />
+                <h3 className="mb-2 pr-5 font-serif text-xl font-bold text-[#214f36]">{benefit.title}</h3>
+                <p className="text-sm leading-relaxed text-[#778171]">{benefit.text}</p>
+                <span className="absolute right-6 top-6 text-xl text-[#6d9b69]/50 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
               </motion.article>
             );
           })}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

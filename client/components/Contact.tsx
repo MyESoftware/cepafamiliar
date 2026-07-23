@@ -25,12 +25,12 @@ export default function Contact() {
   return (
     <div id="contacto" className="w-full">
       {/* Delivery Info Section (Protagonist) */}
-      <section className="delivery section-pad bg-[#163a24] text-white relative overflow-hidden py-24">
+      <section className="section-pad relative overflow-hidden bg-[#163a24] py-16 text-white sm:py-20 lg:py-24">
         {/* Background botanical blur */}
-        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#1b5b34] rounded-full blur-[120px] opacity-40 pointer-events-none" />
+        <div className="pointer-events-none absolute right-0 top-0 h-64 w-64 rounded-full bg-[#1b5b34] opacity-40 blur-[100px] sm:h-[25rem] sm:w-[25rem] sm:blur-[120px]" />
         <div className="delivery-leaf absolute right-[4%] bottom-0 text-[240px] text-[#346b49] opacity-35 select-none pointer-events-none">✦</div>
         
-        <div className="container mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center relative z-10">
+        <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 sm:gap-12 lg:grid-cols-12 lg:gap-20">
           <div className="lg:col-span-7 delivery-copy">
             <span className="eyebrow light block text-xs font-bold uppercase tracking-widest text-[#b8d48f] mb-3">
               Logística Exclusiva
@@ -46,12 +46,12 @@ export default function Contact() {
               </p>
               
               {/* Highlight cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6 text-xs font-semibold text-white">
-                <div className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 rounded-2xl">
+              <div className="mt-6 grid grid-cols-1 gap-3 text-xs font-semibold text-white sm:grid-cols-2 sm:gap-4">
+                <div className="flex min-h-16 items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
                   <span className="text-[#b8d48f] text-lg">⏱</span>
                   <span>Mínimo 24 hs de anticipación</span>
                 </div>
-                <div className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 rounded-2xl">
+                <div className="flex min-h-16 items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
                   <span className="text-[#b8d48f] text-lg">📍</span>
                   <span>Envíos en la Sexta Sección</span>
                 </div>
@@ -59,7 +59,7 @@ export default function Contact() {
             </div>
 
             <a
-              className="button button-gold group inline-flex items-center gap-3 text-xs tracking-widest shadow-[0_4px_14px_rgba(159,189,121,0.25)] hover:scale-[1.03] transition-all"
+              className="button button-gold group w-full shadow-[0_4px_14px_rgba(159,189,121,0.25)] sm:w-auto"
               href="https://wa.me/542612130058"
               target="_blank"
               rel="noreferrer"
@@ -71,7 +71,7 @@ export default function Contact() {
 
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
             <motion.div 
-              className="delivery-card bg-[#faf8f2] text-[#245b3c] p-6 rounded-[32px] shadow-2xl w-full max-w-[340px] border border-[#dcdacb] relative overflow-hidden"
+              className="relative w-full max-w-[20rem] overflow-hidden rounded-[1.5rem] border border-[#dcdacb] bg-[#faf8f2] p-5 text-[#245b3c] shadow-2xl sm:max-w-[21.25rem] sm:rounded-[2rem] sm:p-6"
               initial={{ rotate: 0 }}
               whileInView={{ rotate: 3 }}
               viewport={{ once: true, margin: "-50px" }}
@@ -87,13 +87,13 @@ export default function Contact() {
               
               <div className="relative rounded-2xl overflow-hidden border border-[#d6cfb8] bg-white p-3">
                 <img 
-                  className="delivery-image w-full h-[240px] object-cover rounded-xl" 
+                  className="h-52 w-full rounded-xl object-cover sm:h-60" 
                   src={deliveryUrl} 
                   alt="Código QR WhatsApp Cepa Familiar" 
                 />
               </div>
               
-              <div className="delivery-card-bottom border-t border-[#d6cfb8]/60 pt-4 mt-4 flex items-center justify-between text-[10px] font-bold text-[#245b3c]">
+              <div className="mt-4 flex flex-col gap-2 border-t border-[#d6cfb8]/60 pt-4 text-[10px] font-bold text-[#245b3c] sm:flex-row sm:items-center sm:justify-between">
                 <span className="flex items-center gap-1.5">
                   <MapPin size={14} className="text-[#9fbd79]" /> Sexta Sección · Mendoza
                 </span>
@@ -105,8 +105,8 @@ export default function Contact() {
       </section>
 
       {/* Main Contact Form & Stylized Coverage Map Section */}
-      <section className="contact section-pad bg-[#faf8f2] border-t border-[#dcdacb]">
-        <div className="container mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-stretch">
+      <section className="section-pad border-t border-[#dcdacb] bg-[#faf8f2]">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 items-stretch gap-10 sm:gap-12 lg:grid-cols-12 lg:gap-20">
           
           {/* Details Column */}
           <div className="lg:col-span-6 flex flex-col justify-center">
@@ -123,12 +123,12 @@ export default function Contact() {
               </p>
             </div>
             
-            <div className="contact-details grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-[#d5d2c6]/60 pt-8">
+            <div className="grid grid-cols-1 gap-4 border-t border-[#d5d2c6]/60 pt-6 sm:grid-cols-2 sm:pt-8">
               <a 
                 href="https://wa.me/542612130058" 
                 target="_blank" 
                 rel="noreferrer"
-                className="flex items-start gap-3 p-4 rounded-2xl bg-white border border-[#dcdacb] text-[#245b3c] hover:text-[#719b6a] group transition-all"
+                className="group flex min-h-24 items-start gap-3 rounded-2xl border border-[#dcdacb] bg-white p-4 text-[#245b3c] transition-colors hover:text-[#719b6a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#719b6a]"
               >
                 <Phone size={18} className="text-[#9fbd79] shrink-0 mt-0.5" />
                 <div className="text-[10px] font-bold tracking-wider uppercase">
@@ -141,12 +141,12 @@ export default function Contact() {
 
               <a 
                 href="mailto:cepafamiliar@gmail.com"
-                className="flex items-start gap-3 p-4 rounded-2xl bg-white border border-[#dcdacb] text-[#245b3c] hover:text-[#719b6a] group transition-all"
+                className="group flex min-h-24 items-start gap-3 rounded-2xl border border-[#dcdacb] bg-white p-4 text-[#245b3c] transition-colors hover:text-[#719b6a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#719b6a]"
               >
                 <Mail size={18} className="text-[#9fbd79] shrink-0 mt-0.5" />
                 <div className="text-[10px] font-bold tracking-wider uppercase">
                   Correo
-                  <small className="block text-xs font-semibold text-[#687464] normal-case tracking-normal mt-1">
+                  <small className="mt-1 block break-all text-xs font-semibold normal-case tracking-normal text-[#687464]">
                     cepafamiliar@gmail.com
                   </small>
                 </div>
@@ -157,7 +157,7 @@ export default function Contact() {
           {/* Form Column */}
           <div className="lg:col-span-6 flex flex-col justify-center">
             <motion.form 
-              className="contact-form bg-white p-8 rounded-3xl border border-[#dcdacb] shadow-sm relative overflow-hidden min-h-[420px] flex flex-col justify-center"
+              className="relative flex min-h-[24rem] flex-col justify-center overflow-hidden rounded-3xl border border-[#dcdacb] bg-white p-5 shadow-sm sm:min-h-[26.25rem] sm:p-8"
               onSubmit={sendMessage}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -185,14 +185,14 @@ export default function Contact() {
                   </p>
                   <a 
                     href="mailto:cepafamiliar@gmail.com"
-                    className="block text-sm font-bold text-[#a78038] hover:text-[#245b3c] bg-[#faf8f2] border border-[#dcdacb] py-3 px-4 rounded-xl mb-8 transition-colors select-all"
+                  className="mb-8 block min-h-11 break-all rounded-xl border border-[#dcdacb] bg-[#faf8f2] px-4 py-3 text-sm font-bold text-[#a78038] transition-colors hover:text-[#245b3c]"
                   >
                     cepafamiliar@gmail.com
                   </a>
                   <button
                     type="button"
                     onClick={() => setIsSubmitted(false)}
-                    className="text-xs font-bold text-[#5c7665] hover:text-[#245b3c] tracking-wider uppercase underline transition-colors"
+                    className="min-h-11 px-3 text-xs font-bold uppercase tracking-wider text-[#5c7665] underline transition-colors hover:text-[#245b3c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#719b6a]"
                   >
                     Enviar otra consulta
                   </button>
@@ -213,7 +213,7 @@ export default function Contact() {
                         name="name" 
                         required 
                         placeholder="¿Cómo te llamás?" 
-                        className="w-full bg-[#faf8f2] border border-[#dbd9d0] rounded-xl px-4 py-3 text-sm text-[#245b3c] focus:outline-none focus:border-[#245b3c] transition-colors"
+                        className="h-11 w-full rounded-xl border border-[#dbd9d0] bg-[#faf8f2] px-4 py-3 text-sm text-[#245b3c] transition-colors focus:border-[#245b3c] focus:outline-none focus:ring-2 focus:ring-[#245b3c]/30"
                       />
                     </div>
 
@@ -226,7 +226,7 @@ export default function Contact() {
                         type="email" 
                         required 
                         placeholder="tu@email.com" 
-                        className="w-full bg-[#faf8f2] border border-[#dbd9d0] rounded-xl px-4 py-3 text-sm text-[#245b3c] focus:outline-none focus:border-[#245b3c] transition-colors"
+                        className="h-11 w-full rounded-xl border border-[#dbd9d0] bg-[#faf8f2] px-4 py-3 text-sm text-[#245b3c] transition-colors focus:border-[#245b3c] focus:outline-none focus:ring-2 focus:ring-[#245b3c]/30"
                       />
                     </div>
 
@@ -239,13 +239,13 @@ export default function Contact() {
                         required 
                         placeholder="Escribí aquí cómo podemos ayudarte..." 
                         rows={4} 
-                        className="w-full bg-[#faf8f2] border border-[#dbd9d0] rounded-xl px-4 py-3 text-sm text-[#245b3c] focus:outline-none focus:border-[#245b3c] resize-none transition-colors"
+                        className="min-h-28 w-full resize-y rounded-xl border border-[#dbd9d0] bg-[#faf8f2] px-4 py-3 text-sm text-[#245b3c] transition-colors focus:border-[#245b3c] focus:outline-none focus:ring-2 focus:ring-[#245b3c]/30"
                       />
                     </div>
                   </div>
 
                   <button 
-                    className="button button-dark group w-full flex items-center justify-center gap-2 text-xs py-4.5 rounded-xl shadow-md mt-8 hover:bg-[#1a422b]"
+                    className="button button-dark group mt-8 w-full rounded-xl shadow-md hover:bg-[#1a422b]"
                     type="submit"
                   >
                     Enviar mensaje 

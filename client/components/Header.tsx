@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 
 const logoUrl = "https://cdn.builder.io/api/v1/image/assets%2F1df216b05e0144ac96861ec886ebd57c%2F1570ad4b36a141c6aecef96b9e846deb?format=webp&width=800&height=1200";
@@ -15,18 +15,34 @@ interface HeaderProps {
   goTo: (id: string) => void;
 }
 
+const navigationItems = [
+  ["Inicio", "inicio"],
+  ["Nosotros", "nosotros"],
+  ["Categorías", "categorias"],
+  ["Recetas", "recetas"],
+  ["Contacto", "contacto"],
+] as const;
+
 export default function Header({ goTo }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 32);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 32);
     handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!isMenuOpen || window.innerWidth >= 640) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isMenuOpen]);
 
   const handleNavClick = (id: string) => {
     goTo(id);
@@ -34,25 +50,39 @@ export default function Header({ goTo }: HeaderProps) {
   };
 
   return (
-    <header className={`site-header ${isScrolled ? "is-scrolled" : ""}`}>
-      <button className="brand" onClick={() => handleNavClick("inicio")} aria-label="Ir al inicio">
-        <img className="brand-logo-image" src={logoUrl} alt="Logo de Cepa Familiar" />
+    <header
+      className={`fixed inset-x-0 top-0 z-[60] flex h-[4.5rem] items-center justify-between px-4 transition-all duration-300 sm:px-6 lg:px-16 ${
+        isScrolled
+          ? "bg-[#faf8f2]/95 text-[#1f5134] shadow-[0_7px_28px_rgba(31,74,43,0.11)] backdrop-blur-xl"
+          : "bg-transparent text-white"
+      }`}
+    >
+      <button
+        className="relative z-[61] flex min-h-11 min-w-11 items-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9fbd79] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+        onClick={() => handleNavClick("inicio")}
+        aria-label="Ir al inicio"
+      >
+        <img className="h-11 w-11 rounded-full border-2 border-[#9fbd79] object-cover shadow-md sm:h-14 sm:w-14" src={logoUrl} alt="Logo de Cepa Familiar" />
       </button>
 
-      <nav className={isMenuOpen ? "nav-links open" : "nav-links"} aria-label="Navegación principal">
-        {[
-          ["Inicio", "inicio"],
-          ["Nosotros", "nosotros"],
-          ["Categorías", "categorias"],
-          ["Recetas", "recetas"],
-          ["Contacto", "contacto"],
-        ].map(([label, id]) => (
-          <button key={id} onClick={() => handleNavClick(id)} className="transition-all hover:text-accent duration-300">
+      <nav
+        id="main-navigation"
+        className={`fixed inset-x-0 top-[4.5rem] z-[55] max-h-[calc(100dvh-4.5rem)] flex-col overflow-y-auto border-t border-[#dcdacb] bg-[#faf8f2] px-5 py-5 text-[#245b3c] shadow-xl ${
+          isMenuOpen ? "flex" : "hidden"
+        } sm:static sm:z-auto sm:flex sm:max-h-none sm:flex-row sm:items-center sm:gap-5 sm:overflow-visible sm:border-0 sm:bg-transparent sm:p-0 sm:text-[inherit] sm:shadow-none lg:gap-8`}
+        aria-label="Navegación principal"
+      >
+        {navigationItems.map(([label, id]) => (
+          <button
+            key={id}
+            onClick={() => handleNavClick(id)}
+            className="min-h-11 w-full rounded-lg px-3 text-left text-xs font-semibold uppercase tracking-[0.09em] transition-colors hover:bg-[#e1eddc] hover:text-[#245b3c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#719b6a] sm:w-auto sm:px-1 sm:text-center sm:hover:bg-transparent"
+          >
             {label}
           </button>
         ))}
         <a
-          className="nav-cta group transition-all duration-300 hover:scale-105"
+          className="group mt-2 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#8eb36b] px-4 py-3 text-xs font-bold uppercase tracking-[0.08em] text-[#183d29] transition-colors hover:bg-[#9fbd79] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#719b6a] focus-visible:ring-offset-2 sm:mt-0 sm:w-auto"
           href="https://wa.me/542612130058"
           target="_blank"
           rel="noreferrer"
@@ -63,7 +93,13 @@ export default function Header({ goTo }: HeaderProps) {
         </a>
       </nav>
 
-      <button className="menu-toggle hover:text-accent transition-colors" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}>
+      <button
+        className="relative z-[61] inline-flex h-11 w-11 items-center justify-center rounded-full transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9fbd79] sm:hidden"
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
+        aria-expanded={isMenuOpen}
+        aria-controls="main-navigation"
+      >
         {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
     </header>
